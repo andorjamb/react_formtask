@@ -1,4 +1,9 @@
 # Forms Task
 
+A simple contact form created with React.
 
-![screenshot](./public/)
+## Screen shots from task
+
+
+![screenshot](./formtask_screenshot2)
+![screenshot](./formtask_screenshot1)
