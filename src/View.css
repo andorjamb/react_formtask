@@ -3,28 +3,34 @@
 
 .view {
     width: 40vw;
-    box-shadow: 2px 2px 4px grey;
-
-    margin: 0.5rem;
-    padding: 0.5rem;
     background-color: white;
+    box-shadow: 2px 2px 4px grey;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
 }
 
 .proforma {
+    width: 110px;
+    display: inline-block;
     font-family: 'Roboto';
     padding: 0 0.5rem;
-    display: inline-block;
-    width: 100px;
-    text-align: left;
+    margin: 0;
 }
 
 .handwriting {
-    font-family: "Grape Nuts";
-    padding: 0 0.5rem;
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
-    text-align: center;
     max-width: 300px;
-    word-wrap: wrap;
     display: inline-block;
+    font-family: "Grape Nuts";
+    font-size: 1.5rem;
+    word-wrap: wrap;
+    padding: 0 0.5rem;
+    margin: 0 0.5rem;
+}
+
+@media screen and (max-width:700px) {
+    .view {
+        flex: 100%;
+        width: 90vw;
+
+    }
 }

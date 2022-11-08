@@ -47,3 +47,11 @@ button {
     height: 100px;
 
 }
+
+@media screen and (max-width:700px) {
+    .form {
+        flex: 100%;
+        width: 90vw;
+
+    }
+}
