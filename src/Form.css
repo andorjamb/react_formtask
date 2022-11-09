@@ -8,24 +8,30 @@
 
 }
 
-.form label {
+label {
     padding: 0.5rem;
     margin: 0.5rem;
     width: 100px;
     display: inline-block;
     text-align: top;
+    border: 2px solid red;
 }
 
-.form input,
+input,
 select,
 #message {
-    height: 20px;
+    height: 30px;
     width: 280px;
-    border: inset;
+    border: none;
     margin: 0.5rem;
     padding: 0.5rem;
     display: inline-block;
 }
+
+textarea {
+    resize: none;
+}
+
 
 .form button {
     display: block;

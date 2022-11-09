@@ -9,6 +9,11 @@
     padding: 0.5rem;
 }
 
+h2,
+h3 {
+    text-align: center;
+}
+
 .proforma {
     width: 110px;
     display: inline-block;

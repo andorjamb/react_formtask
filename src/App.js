@@ -16,7 +16,6 @@ class App extends Component {
     "message": "",
     "role": "",
     "showPopup": false,
-    "showConfirm": false,
   }
 
   formDataHandler = (e) => {
@@ -27,7 +26,6 @@ class App extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log('submit');
     this.setState({ showPopup: true });
   }
 
