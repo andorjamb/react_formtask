@@ -10,23 +10,26 @@ import Popup from './Popup';
 class App extends Component {
 
   state = {
-    "firstName": "",
-    "lastName": "",
-    "phonenumber": "",
-    "message": "",
-    "role": "",
-    "showPopup": false,
+    note: {
+      "firstName": "",
+      "lastName": "",
+      "phonenumber": "",
+      "message": "",
+      "role": "",
+    },
+
+    showPopup: false,
   }
 
   formDataHandler = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      note: { ...this.state.note, [e.target.name]: e.target.value }
     })
   }
 
   submitHandler = (e) => {
     e.preventDefault();
-    this.setState({ showPopup: true });
+    this.setState({ showPopup: !this.state.showPopup });
   }
 
   buttonHandler = () => {
@@ -48,12 +51,7 @@ class App extends Component {
         phonenumber={this.state.phonenumber}
         message={this.state.message}
         role={this.state.role}>
-        <View
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          phonenumber={this.state.phonenumber}
-          message={this.state.message}
-          role={this.state.role} />
+        <View {...this.state.note} />
       </Popup>
     }
 
@@ -70,12 +68,9 @@ class App extends Component {
           message={this.state.message}
           role={this.state.role} />
         {popup}
-
-
       </div>
     )
   }
-
 }
 
 export default App;
