@@ -6,4 +6,4 @@ A simple contact form created with React.
 
 
 ![screenshot](https://github.com/andorjamb/react_formtask/blob/master/formtask_screenshot2.png)
-![screenshot](./formtask_screenshot1)
+![screenshot](https://github.com/andorjamb/react_formtask/blob/master/formtask_screenshot1.png)
