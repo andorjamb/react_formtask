@@ -1,0 +1,12 @@
+.notes {
+    height: auto;
+    border: 3px solid blueviolet;
+    flex: 40%;
+}
+
+ul,
+li {
+    list-style-type: none;
+    padding: 0.2rem;
+
+}

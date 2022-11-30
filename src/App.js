@@ -1,76 +1,74 @@
-
-import './App.css';
-import React, { Component } from 'react';
-import { render } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Form from './Form';
-import View from './View';
+import Notes from './Notes'
 import Popup from './Popup';
+import View from './View';
 
-class App extends Component {
+import './App.css';
+import axios from 'axios';
 
-  state = {
-    note: {
-      "firstName": "",
-      "lastName": "",
-      "phonenumber": "",
-      "message": "",
-      "role": "",
-    },
+const App = ({ notes }) => {
 
-    showPopup: false,
+  const [showPopup, setShowPopup] = useState(false);
+  const [view, setView] = useState([]);
+  const [note, setNote] = useState({
+
+    "firstName": "",
+    "lastName": "",
+    "phonenumber": "",
+    "message": "",
+    "role": "",
   }
+  );
 
-  formDataHandler = (e) => {
-    this.setState({
-      note: { ...this.state.note, [e.target.name]: e.target.value }
-    })
-  }
-
-  submitHandler = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
-    this.setState({ showPopup: !this.state.showPopup });
+    setShowPopup(true);
   }
 
-  buttonHandler = () => {
+  const formDataHandler = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value })
+    setView({ ...note, [e.target.name]: e.target.value });
+  }
+
+  const sendButtonHandler = () => {
+    axios.post('http://localhost:3003/notes', {
+      ...note
+    })
+      .catch((error) => console.log(error));
+    setShowPopup(false);
     window.location.reload(true);
 
   }
 
+  const disCardButtonHandler = () => {
+    setShowPopup(false);
+    window.location.reload(true)
 
-  render() {
-    const showPopup = this.state.showPopup;
-    let popup;
-
-    if (showPopup) {
-      popup = <Popup
-        discardButtonHandler={this.buttonHandler}
-        sendButtonHandler={this.buttonHandler}
-        firstName={this.state.firstName}
-        lastName={this.state.lastName}
-        phonenumber={this.state.phonenumber}
-        message={this.state.message}
-        role={this.state.role}>
-        <View {...this.state.note} />
-      </Popup>
-    }
-
-    return (
-      <div className="App">
-        <h1>Contact Form</h1>
-        <Form
-          submitHandler={this.submitHandler}
-          eventHandler={this.formDataHandler} />
-        <View
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          phonenumber={this.state.phonenumber}
-          message={this.state.message}
-          role={this.state.role} />
-        {popup}
-      </div>
-    )
   }
+
+  /*  useEffect(() => {
+ 
+   }, [showPopup])
+  */
+
+  return (
+
+    <div className="App">
+      <header> <h1>Contact Form</h1></header>
+      <main>
+
+        <Form
+          submitHandler={submitHandler}
+          eventHandler={formDataHandler} {...note} />
+
+        <View {...note} /></main> <Notes />
+      {showPopup && <Popup firstname={note.firstname}
+        sendButtonHandler={sendButtonHandler}
+        discardButtonHandler={disCardButtonHandler} />}
+    </div>
+  )
 }
 
 export default App;
